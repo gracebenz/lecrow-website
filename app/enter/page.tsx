@@ -4,16 +4,15 @@ import { checkPassword } from "./actions";
 export default async function EnterPage({
   searchParams,
 }: {
-  searchParams: Promise<{ error?: string }>;
+  searchParams: Promise<{ error?: string; from?: string }>;
 }) {
-  const { error } = await searchParams;
+  const { error, from } = await searchParams;
 
   return (
     <div
       className="h-screen flex flex-col items-center justify-center"
       style={{ background: "var(--pitch-black)" }}
     >
-      {/* Back link */}
       <Link
         href="/"
         className="absolute top-6 left-8 text-[10px] tracking-[0.25em] uppercase transition-opacity hover:opacity-60"
@@ -23,7 +22,6 @@ export default async function EnterPage({
       </Link>
 
       <div className="flex flex-col items-center gap-10 w-full max-w-xs px-8">
-        {/* Wordmark — consistent with landing */}
         <span
           className="text-sm font-bold tracking-[0.3em] uppercase"
           style={{ fontFamily: "var(--font-label)", color: "var(--parchment)" }}
@@ -31,8 +29,8 @@ export default async function EnterPage({
           CROW
         </span>
 
-        {/* Form */}
         <form action={checkPassword} className="w-full flex flex-col gap-4">
+          {from && <input type="hidden" name="from" value={from} />}
           <div className="flex flex-col gap-2">
             <label
               htmlFor="password"

@@ -52,7 +52,7 @@ export default function ContactPage() {
           className="mt-8 text-[10px] tracking-[0.3em] uppercase"
           style={{ fontFamily: "var(--font-label)", color: "var(--cool-steel)" }}
         >
-          Los Angeles &nbsp;—&nbsp; Available for selected projects
+          New York &nbsp;—&nbsp; Available for selected projects
         </p>
       </div>
     </div>

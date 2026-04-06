@@ -53,9 +53,10 @@ export default function WorkPage() {
       {/* Project list */}
       <div className="flex-1 px-8 pb-16">
         {projects.map((project, i) => (
-          <div
+          <Link
             key={project.slug}
-            className="flex items-baseline justify-between py-6 border-t"
+            href={`/work/${project.slug}`}
+            className="flex items-baseline justify-between py-6 border-t transition-opacity hover:opacity-60"
             style={{ borderColor: "rgba(150,172,183,0.15)" }}
           >
             {/* Left */}
@@ -125,7 +126,7 @@ export default function WorkPage() {
                 {project.year}
               </span>
             </div>
-          </div>
+          </Link>
         ))}
         <div className="border-t" style={{ borderColor: "rgba(150,172,183,0.15)" }} />
 
@@ -152,7 +153,7 @@ export default function WorkPage() {
         style={{ borderColor: "rgba(150,172,183,0.15)", fontFamily: "var(--font-label)" }}
       >
         <span className="text-[10px] tracking-[0.25em] uppercase" style={{ color: "var(--cool-steel)" }}>
-          Los Angeles
+          New York
         </span>
         <a
           href="mailto:hello@lecrow.com"

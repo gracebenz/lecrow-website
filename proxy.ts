@@ -4,7 +4,8 @@ import type { NextRequest } from 'next/server'
 export function proxy(request: NextRequest) {
   const auth = request.cookies.get('crow-auth')?.value
   if (auth !== 'authenticated') {
-    return NextResponse.redirect(new URL('/enter', request.url))
+    const from = request.nextUrl.pathname
+    return NextResponse.redirect(new URL(`/enter?from=${encodeURIComponent(from)}`, request.url))
   }
   return NextResponse.next()
 }

@@ -20,7 +20,7 @@ export default function Home() {
         </span>
         <div className="flex items-center gap-10">
           <Link
-            href="/enter"
+            href="/work"
             className="text-xs font-medium tracking-[0.25em] uppercase transition-opacity hover:opacity-60"
             style={{ color: "var(--parchment)" }}
           >
@@ -43,7 +43,7 @@ export default function Home() {
           {projects.slice(0, 6).map((p) => (
             <Link
               key={p.slug}
-              href="/enter"
+              href={`/work/${p.slug}`}
               className="group block transition-opacity hover:opacity-60"
               style={{ fontFamily: "var(--font-label)" }}
             >
@@ -89,13 +89,7 @@ export default function Home() {
           className="text-[10px] tracking-[0.25em] uppercase"
           style={{ color: "var(--cool-steel)" }}
         >
-          Los Angeles
-        </span>
-        <span
-          className="text-[10px] tracking-[0.25em] uppercase"
-          style={{ color: "var(--cool-steel)" }}
-        >
-          7× Academy Award Nominated &nbsp;·&nbsp; 1× Winner
+          New York
         </span>
         <a
           href="mailto:hello@lecrow.com"
