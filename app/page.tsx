@@ -1,65 +1,116 @@
-import Image from "next/image";
+import Link from "next/link";
+import { projects } from "./data";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <div
+      className="relative h-screen w-full overflow-hidden flex flex-col"
+      style={{ background: "var(--pitch-black)" }}
+    >
+      {/* Background gradient — replace with full-bleed film still */}
+      <div
+        className="absolute inset-0 z-0"
+        style={{
+          background:
+            "radial-gradient(ellipse at 60% 40%, #1c1c28 0%, #0d0d0d 55%, var(--pitch-black) 100%)",
+        }}
+      />
+
+      {/* Nav */}
+      <nav
+        className="relative z-10 flex items-center justify-between px-8 py-6"
+        style={{ fontFamily: "var(--font-label)" }}
+      >
+        <span
+          className="text-sm font-bold tracking-[0.3em] uppercase"
+          style={{ color: "var(--parchment)" }}
+        >
+          CROW
+        </span>
+        <div className="flex items-center gap-10">
+          <Link
+            href="/enter"
+            className="text-xs font-medium tracking-[0.25em] uppercase transition-opacity hover:opacity-60"
+            style={{ color: "var(--parchment)" }}
+          >
+            Work
+          </Link>
+          <Link
+            href="/contact"
+            className="text-xs font-medium tracking-[0.25em] uppercase transition-opacity hover:opacity-60"
+            style={{ color: "var(--parchment)" }}
+          >
+            Contact
+          </Link>
+        </div>
+      </nav>
+
+      {/* Body */}
+      <div className="relative z-10 flex flex-1 items-stretch px-8 pb-8">
+        {/* Left — project list teaser */}
+        <div className="flex flex-col justify-center gap-7 w-64 shrink-0">
+          {projects.map((p) => (
+            <Link
+              key={p.slug}
+              href="/enter"
+              className="group block transition-opacity hover:opacity-60"
+              style={{ fontFamily: "var(--font-label)" }}
+            >
+              <p
+                className="text-xs font-semibold tracking-[0.2em] uppercase"
+                style={{ color: "var(--parchment)" }}
+              >
+                {p.title}
+              </p>
+              <p
+                className="text-[10px] tracking-[0.18em] uppercase mt-0.5"
+                style={{ color: "var(--cool-steel)" }}
+              >
+                [ {p.client} ]
+              </p>
+            </Link>
+          ))}
+        </div>
+
+        {/* Right — tagline */}
+        <div className="flex flex-col justify-end flex-1 pl-16 pb-2">
+          <h1
+            className="text-[clamp(2.5rem,5.5vw,5rem)] leading-[1.08] font-light italic"
+            style={{ fontFamily: "var(--font-display)", color: "var(--parchment)" }}
+          >
+            Shaping the worlds<br />that films inhabit.
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+      </div>
+
+      {/* Bottom bar */}
+      <div
+        className="relative z-10 flex items-center justify-between px-8 py-4 border-t"
+        style={{
+          borderColor: "rgba(150,172,183,0.15)",
+          fontFamily: "var(--font-label)",
+        }}
+      >
+        <span
+          className="text-[10px] tracking-[0.25em] uppercase"
+          style={{ color: "var(--cool-steel)" }}
+        >
+          Los Angeles
+        </span>
+        <span
+          className="text-[10px] tracking-[0.25em] uppercase"
+          style={{ color: "var(--cool-steel)" }}
+        >
+          7× Academy Award Nominated &nbsp;·&nbsp; 1× Winner
+        </span>
+        <a
+          href="mailto:hello@lecrow.com"
+          className="text-[10px] tracking-[0.25em] uppercase transition-opacity hover:opacity-60"
+          style={{ color: "var(--cool-steel)" }}
+        >
+          hello@lecrow.com
+        </a>
+      </div>
     </div>
   );
 }
