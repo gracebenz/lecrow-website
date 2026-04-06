@@ -28,7 +28,7 @@ export function ImageGallery({ images, title }: { images: string[]; title: strin
         {/* Featured image — top, full width, uncropped */}
         <div
           className="relative w-full cursor-zoom-in overflow-hidden"
-          style={{ aspectRatio: "16 / 9", background: "var(--charcoal)" }}
+          style={{ aspectRatio: "16 / 9" }}
           onClick={() => setLightbox(true)}
         >
           <Image
