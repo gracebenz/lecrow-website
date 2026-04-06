@@ -114,19 +114,10 @@ export default async function ProjectPage({
         {project.images && project.images.length > 0 ? (
           <ImageGallery images={project.images} title={project.title} />
         ) : (
-          <div className="flex gap-4 mb-4" style={{ height: "480px" }}>
-            <div className="flex flex-col gap-2 shrink-0 w-36">
-              {[0, 1, 2].map((i) => (
-                <div
-                  key={i}
-                  className="w-full"
-                  style={{ background: "var(--charcoal)", aspectRatio: "16 / 9", opacity: i === 0 ? 1 : 0.45 }}
-                />
-              ))}
-            </div>
+          <div className="flex flex-col gap-3 mb-4">
             <div
-              className="flex-1 flex items-end p-4"
-              style={{ background: "var(--charcoal)" }}
+              className="w-full flex items-end p-4"
+              style={{ background: "var(--charcoal)", aspectRatio: "16 / 9" }}
             >
               <span
                 className="text-[9px] tracking-[0.2em] uppercase"
@@ -134,6 +125,15 @@ export default async function ProjectPage({
               >
                 Images to be added
               </span>
+            </div>
+            <div className="flex gap-2">
+              {[0, 1, 2].map((i) => (
+                <div
+                  key={i}
+                  className="shrink-0"
+                  style={{ width: "120px", aspectRatio: "16 / 9", background: "var(--charcoal)", opacity: i === 0 ? 1 : 0.4 }}
+                />
+              ))}
             </div>
           </div>
         )}
