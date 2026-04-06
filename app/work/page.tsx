@@ -42,6 +42,12 @@ export default function WorkPage() {
         >
           Selected Work
         </h1>
+        <p
+          className="mt-3 text-[10px] tracking-[0.25em] uppercase"
+          style={{ fontFamily: "var(--font-label)", color: "var(--cool-steel)" }}
+        >
+          Nathan Crowley &nbsp;·&nbsp; Production Designer
+        </p>
       </div>
 
       {/* Project list */}
@@ -49,11 +55,12 @@ export default function WorkPage() {
         {projects.map((project, i) => (
           <div
             key={project.slug}
-            className="group flex items-baseline justify-between py-6 border-t transition-opacity hover:opacity-70 cursor-default"
+            className="flex items-baseline justify-between py-6 border-t"
             style={{ borderColor: "rgba(150,172,183,0.15)" }}
           >
             {/* Left */}
             <div className="flex items-baseline gap-8">
+              {/* Index — metadata tier */}
               <span
                 className="text-[10px] tracking-[0.2em] w-6 shrink-0"
                 style={{ fontFamily: "var(--font-label)", color: "var(--cool-steel)" }}
@@ -66,27 +73,39 @@ export default function WorkPage() {
                   style={{ fontFamily: "var(--font-display)", color: "var(--parchment)" }}
                 >
                   {project.title}
+                  {project.oscarWon && (
+                    <span
+                      className="ml-3 text-base"
+                      style={{ color: "var(--almond-silk)" }}
+                      title="Academy Award Winner"
+                    >
+                      ★
+                    </span>
+                  )}
+                  {project.oscarNominated && !project.oscarWon && (
+                    <span
+                      className="ml-3 text-base"
+                      style={{ color: "var(--cool-steel)" }}
+                      title="Academy Award Nominated"
+                    >
+                      ✦
+                    </span>
+                  )}
                 </h2>
                 <p
-                  className="text-[10px] tracking-[0.2em] uppercase mt-1"
+                  className="text-[10px] tracking-[0.18em] uppercase mt-1"
                   style={{ fontFamily: "var(--font-label)", color: "var(--cool-steel)" }}
                 >
-                  [ {project.client} ]
+                  [ {project.studio} ]
                 </p>
               </div>
             </div>
 
-            {/* Right */}
+            {/* Right — metadata tier */}
             <div
-              className="flex items-baseline gap-10 text-right shrink-0 ml-8"
+              className="flex items-baseline gap-8 shrink-0 ml-8 text-right"
               style={{ fontFamily: "var(--font-label)" }}
             >
-              <span
-                className="hidden md:block text-[10px] tracking-[0.2em] uppercase"
-                style={{ color: "var(--cool-steel)" }}
-              >
-                {project.role}
-              </span>
               <span
                 className="hidden md:block text-[10px] tracking-[0.2em] uppercase"
                 style={{ color: "var(--cool-steel)" }}
@@ -94,7 +113,7 @@ export default function WorkPage() {
                 Dir. {project.director}
               </span>
               <span
-                className="text-[10px] tracking-[0.2em] uppercase"
+                className="hidden md:block text-[10px] tracking-[0.2em] uppercase"
                 style={{ color: "var(--cool-steel)" }}
               >
                 {project.type}
@@ -108,8 +127,23 @@ export default function WorkPage() {
             </div>
           </div>
         ))}
-        {/* Final border */}
         <div className="border-t" style={{ borderColor: "rgba(150,172,183,0.15)" }} />
+
+        {/* Legend */}
+        <div className="flex gap-8 mt-8">
+          <span
+            className="text-[10px] tracking-[0.2em] uppercase"
+            style={{ fontFamily: "var(--font-label)", color: "var(--cool-steel)" }}
+          >
+            <span style={{ color: "var(--almond-silk)" }}>★</span> &nbsp;Academy Award Winner
+          </span>
+          <span
+            className="text-[10px] tracking-[0.2em] uppercase"
+            style={{ fontFamily: "var(--font-label)", color: "var(--cool-steel)" }}
+          >
+            ✦ &nbsp;Academy Award Nominated
+          </span>
+        </div>
       </div>
 
       {/* Footer */}

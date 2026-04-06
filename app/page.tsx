@@ -7,15 +7,6 @@ export default function Home() {
       className="relative h-screen w-full overflow-hidden flex flex-col"
       style={{ background: "var(--pitch-black)" }}
     >
-      {/* Background gradient — replace with full-bleed film still */}
-      <div
-        className="absolute inset-0 z-0"
-        style={{
-          background:
-            "radial-gradient(ellipse at 60% 40%, #1c1c28 0%, #0d0d0d 55%, var(--pitch-black) 100%)",
-        }}
-      />
-
       {/* Nav */}
       <nav
         className="relative z-10 flex items-center justify-between px-8 py-6"
@@ -49,7 +40,7 @@ export default function Home() {
       <div className="relative z-10 flex flex-1 items-stretch px-8 pb-8">
         {/* Left — project list teaser */}
         <div className="flex flex-col justify-center gap-7 w-64 shrink-0">
-          {projects.map((p) => (
+          {projects.slice(0, 6).map((p) => (
             <Link
               key={p.slug}
               href="/enter"
@@ -61,12 +52,15 @@ export default function Home() {
                 style={{ color: "var(--parchment)" }}
               >
                 {p.title}
+                {p.oscarWon && (
+                  <span style={{ color: "var(--almond-silk)" }}> ★</span>
+                )}
               </p>
               <p
                 className="text-[10px] tracking-[0.18em] uppercase mt-0.5"
                 style={{ color: "var(--cool-steel)" }}
               >
-                [ {p.client} ]
+                [ {p.studio} ]
               </p>
             </Link>
           ))}
@@ -78,7 +72,7 @@ export default function Home() {
             className="text-[clamp(2.5rem,5.5vw,5rem)] leading-[1.08] font-light italic"
             style={{ fontFamily: "var(--font-display)", color: "var(--parchment)" }}
           >
-            Shaping the worlds<br />that films inhabit.
+            Form follows film.
           </h1>
         </div>
       </div>

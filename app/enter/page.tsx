@@ -23,13 +23,13 @@ export default async function EnterPage({
       </Link>
 
       <div className="flex flex-col items-center gap-10 w-full max-w-xs px-8">
-        {/* Wordmark */}
-        <h1
-          className="text-5xl font-light italic tracking-wide"
-          style={{ fontFamily: "var(--font-display)", color: "var(--parchment)" }}
+        {/* Wordmark — consistent with landing */}
+        <span
+          className="text-sm font-bold tracking-[0.3em] uppercase"
+          style={{ fontFamily: "var(--font-label)", color: "var(--parchment)" }}
         >
           CROW
-        </h1>
+        </span>
 
         {/* Form */}
         <form action={checkPassword} className="w-full flex flex-col gap-4">
@@ -47,7 +47,7 @@ export default async function EnterPage({
               type="password"
               autoFocus
               autoComplete="off"
-              className="w-full bg-transparent border-b py-2 text-sm tracking-widest outline-none focus:border-b-[var(--parchment)] transition-colors"
+              className="w-full bg-transparent border-b py-2 text-sm tracking-widest outline-none transition-colors"
               style={{
                 fontFamily: "var(--font-label)",
                 color: "var(--parchment)",
