@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { projects } from "../../data";
+import { ImageGallery } from "./image-gallery";
 
 export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
@@ -109,32 +110,27 @@ export default async function ProjectPage({
           {project.description}
         </p>
 
-        {/* Image placeholders */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-4">
-          {[0, 1, 2].map((i) => (
-            <div
-              key={i}
-              className="w-full flex items-end p-3"
-              style={{
-                background: "var(--charcoal)",
-                aspectRatio: "16 / 9",
-              }}
-            >
-              <span
-                className="text-[9px] tracking-[0.2em] uppercase"
-                style={{ fontFamily: "var(--font-label)", color: "rgba(150,172,183,0.4)" }}
+        {/* Images */}
+        {project.images && project.images.length > 0 ? (
+          <ImageGallery images={project.images} title={project.title} />
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-4">
+            {[0, 1, 2].map((i) => (
+              <div
+                key={i}
+                className="w-full flex items-end p-3"
+                style={{ background: "var(--charcoal)", aspectRatio: "16 / 9" }}
               >
-                {project.title} &nbsp;·&nbsp; {String(i + 1).padStart(2, "0")}
-              </span>
-            </div>
-          ))}
-        </div>
-        <p
-          className="text-[9px] tracking-[0.2em] uppercase"
-          style={{ fontFamily: "var(--font-label)", color: "rgba(150,172,183,0.3)" }}
-        >
-          Images to be added
-        </p>
+                <span
+                  className="text-[9px] tracking-[0.2em] uppercase"
+                  style={{ fontFamily: "var(--font-label)", color: "rgba(150,172,183,0.4)" }}
+                >
+                  {project.title} &nbsp;·&nbsp; {String(i + 1).padStart(2, "0")}
+                </span>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
 
       {/* Prev / Next */}

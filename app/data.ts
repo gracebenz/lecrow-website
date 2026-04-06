@@ -7,6 +7,7 @@ export type Project = {
   year: number
   type: string
   description: string
+  images?: string[]
   oscarNominated?: boolean
   oscarWon?: boolean
 }
@@ -21,6 +22,15 @@ export const projects: Project[] = [
     year: 2024,
     type: "Feature Film",
     description: "A world built from the ground up — Munchkinland constructed across 700 acres with nine million tulips grown in Norfolk, England. The Emerald City drew from the 1893 Chicago World's Fair and Daniel Burnham's architectural modernism. Winner of the Academy Award for Best Production Design.",
+    images: [
+      "/Wicked1.webp",
+      "/wicked2.webp",
+      "/wicked3.webp",
+      "/wicked4.webp",
+      "/wicked5.webp",
+      "/wicked6.webp",
+      "/wicked7.webp",
+    ],
     oscarNominated: true,
     oscarWon: true,
   },
