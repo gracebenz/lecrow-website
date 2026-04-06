@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { projects } from "./data";
+import { projects, FEATURED_COUNT } from "./data";
 
 export default function Home() {
   return (
@@ -40,7 +40,7 @@ export default function Home() {
       <div className="relative z-10 flex flex-1 items-stretch px-8 pb-8">
         {/* Left — project list teaser */}
         <div className="flex flex-col justify-center gap-7 w-64 shrink-0">
-          {projects.slice(0, 6).map((p) => (
+          {projects.slice(0, FEATURED_COUNT).map((p) => (
             <Link
               key={p.slug}
               href={`/work/${p.slug}`}

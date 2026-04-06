@@ -12,6 +12,8 @@ export type Project = {
   oscarWon?: boolean
 }
 
+export const FEATURED_COUNT = 5
+
 export const projects: Project[] = [
   {
     slug: "wicked",

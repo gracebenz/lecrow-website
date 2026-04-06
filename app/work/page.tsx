@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { projects } from "../data";
+import { projects, FEATURED_COUNT } from "../data";
 
 export default function WorkPage() {
   return (
@@ -52,7 +52,7 @@ export default function WorkPage() {
 
       {/* Project list */}
       <div className="flex-1 px-8 pb-16">
-        {projects.map((project, i) => (
+        {projects.slice(0, FEATURED_COUNT).map((project, i) => (
           <Link
             key={project.slug}
             href={`/work/${project.slug}`}
