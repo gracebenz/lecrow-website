@@ -103,10 +103,37 @@ export default async function ProjectPage({
 
         {/* Description */}
         <p
-          className="text-base md:text-lg leading-relaxed font-light max-w-2xl"
+          className="text-base md:text-lg leading-relaxed font-light max-w-2xl mb-16"
           style={{ fontFamily: "var(--font-display)", color: "var(--parchment)" }}
         >
           {project.description}
+        </p>
+
+        {/* Image placeholders */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-4">
+          {[0, 1, 2].map((i) => (
+            <div
+              key={i}
+              className="w-full flex items-end p-3"
+              style={{
+                background: "var(--charcoal)",
+                aspectRatio: "16 / 9",
+              }}
+            >
+              <span
+                className="text-[9px] tracking-[0.2em] uppercase"
+                style={{ fontFamily: "var(--font-label)", color: "rgba(150,172,183,0.4)" }}
+              >
+                {project.title} &nbsp;·&nbsp; {String(i + 1).padStart(2, "0")}
+              </span>
+            </div>
+          ))}
+        </div>
+        <p
+          className="text-[9px] tracking-[0.2em] uppercase"
+          style={{ fontFamily: "var(--font-label)", color: "rgba(150,172,183,0.3)" }}
+        >
+          Images to be added
         </p>
       </div>
 
