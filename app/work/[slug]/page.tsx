@@ -21,11 +21,11 @@ export default async function ProjectPage({
   const next = projects[index + 1];
 
   return (
-    <div className="min-h-screen flex flex-col" style={{ background: "var(--pitch-black)" }}>
+    <div className="h-screen overflow-hidden flex flex-col" style={{ background: "var(--pitch-black)" }}>
 
       {/* Nav */}
       <nav
-        className="flex items-center justify-between px-8 py-6 border-b"
+        className="flex items-center justify-between px-8 py-6 border-b shrink-0"
         style={{ borderColor: "rgba(150,172,183,0.15)", fontFamily: "var(--font-label)" }}
       >
         <Link
@@ -53,21 +53,23 @@ export default async function ProjectPage({
         </div>
       </nav>
 
-      {/* Main */}
-      <div className="flex-1 flex flex-col px-8 pt-16 pb-16 max-w-4xl">
+      {/* Header — full width, compact */}
+      <div className="px-8 pt-8 pb-5 shrink-0">
 
-        {/* Back */}
-        <Link
-          href="/work"
-          className="text-[10px] tracking-[0.25em] uppercase mb-12 transition-opacity hover:opacity-60 self-start"
-          style={{ fontFamily: "var(--font-label)", color: "var(--cool-steel)" }}
-        >
-          ← Selected Work
-        </Link>
+        {/* Back link */}
+        <div className="mb-6">
+          <Link
+            href="/work"
+            className="text-[10px] tracking-[0.25em] uppercase transition-opacity hover:opacity-60"
+            style={{ fontFamily: "var(--font-label)", color: "var(--cool-steel)" }}
+          >
+            ← Selected Work
+          </Link>
+        </div>
 
-        {/* Metadata row */}
+        {/* Metadata — above title */}
         <div
-          className="flex flex-wrap gap-x-8 gap-y-1 mb-8 text-[10px] tracking-[0.2em] uppercase"
+          className="flex gap-6 text-[10px] tracking-[0.2em] uppercase mb-2"
           style={{ fontFamily: "var(--font-label)", color: "var(--cool-steel)" }}
         >
           <span>[ {project.studio} ]</span>
@@ -83,20 +85,16 @@ export default async function ProjectPage({
 
         {/* Title */}
         <h1
-          className="text-[clamp(3rem,8vw,7rem)] leading-[1.0] font-light italic mb-6"
+          className="text-[clamp(2rem,5vw,4.5rem)] leading-[1.0] font-light italic"
           style={{ fontFamily: "var(--font-display)", color: "var(--parchment)" }}
         >
           {project.title}
         </h1>
 
-        {/* Credits */}
+        {/* Credits — below title */}
         <div
-          className="flex flex-wrap gap-x-10 gap-y-1 mb-12 text-[10px] tracking-[0.2em] uppercase border-t pt-6"
-          style={{
-            fontFamily: "var(--font-label)",
-            color: "var(--cool-steel)",
-            borderColor: "rgba(150,172,183,0.15)",
-          }}
+          className="flex gap-8 text-[10px] tracking-[0.2em] uppercase mt-2 mb-4"
+          style={{ fontFamily: "var(--font-label)", color: "var(--cool-steel)" }}
         >
           <span>{project.role} — Nathan Crowley</span>
           <span>Dir. {project.director}</span>
@@ -104,20 +102,22 @@ export default async function ProjectPage({
 
         {/* Description */}
         <p
-          className="text-base md:text-lg leading-relaxed font-light max-w-2xl mb-16"
-          style={{ fontFamily: "var(--font-display)", color: "var(--parchment)" }}
+          className="text-lg leading-relaxed font-light max-w-3xl border-t pt-4"
+          style={{ fontFamily: "var(--font-display)", color: "var(--parchment)", opacity: 0.85, borderColor: "rgba(150,172,183,0.15)" }}
         >
           {project.description}
         </p>
+      </div>
 
-        {/* Images */}
+      {/* Gallery — fills remaining space */}
+      <div className="flex-1 overflow-hidden px-8 pb-4">
         {project.images && project.images.length > 0 ? (
           <ImageGallery images={project.images} title={project.title} />
         ) : (
-          <div className="flex flex-col gap-3 mb-4">
+          <div className="flex flex-col gap-3 h-full">
             <div
-              className="w-full flex items-end p-4"
-              style={{ background: "var(--charcoal)", aspectRatio: "16 / 9" }}
+              className="flex-1 flex items-end p-4"
+              style={{ background: "var(--charcoal)" }}
             >
               <span
                 className="text-[9px] tracking-[0.2em] uppercase"
@@ -126,7 +126,7 @@ export default async function ProjectPage({
                 Images to be added
               </span>
             </div>
-            <div className="flex gap-2">
+            <div className="flex gap-2 shrink-0">
               {[0, 1, 2].map((i) => (
                 <div
                   key={i}
@@ -141,7 +141,7 @@ export default async function ProjectPage({
 
       {/* Prev / Next */}
       <div
-        className="flex items-center justify-between px-8 py-6 border-t"
+        className="flex items-center justify-between px-8 py-4 border-t shrink-0"
         style={{ borderColor: "rgba(150,172,183,0.15)", fontFamily: "var(--font-label)" }}
       >
         {prev ? (
